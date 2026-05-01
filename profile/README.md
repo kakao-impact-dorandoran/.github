@@ -1,5 +1,3 @@
-제공해주신 이미지(image_69483d.png)의 구성과 스타일을 참고하여, 현재 진행 중인 '도란도란' 프로젝트의 오가니제이션 프로필용 README.md 초안을 작성해 드립니다. 이 내용을 .github 레포지토리의 profile/README.md에 복사해서 사용하시면 됩니다.
-
 🏠 도란도란 (Doran-Doran)
 사용자 가이드 (User Guide)
 서비스 소개
