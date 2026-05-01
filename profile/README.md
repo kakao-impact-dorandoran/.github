@@ -27,6 +27,7 @@ Web: 크롬(Chrome) 및 최신 브라우저 최적화
 Mobile: 모바일 반응형 웹 지원
 
 개발자 가이드 (Developer Guide)
+
 기술 스택
 Backend: Java 17, Spring Boot, Spring Data JPA
 
