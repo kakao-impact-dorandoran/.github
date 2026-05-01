@@ -1,83 +1,94 @@
-🏠 도란도란 (Doran-Doran)
-사용자 가이드 (User Guide)
-서비스 소개
-은둔 청년들이 사회로 한 발자국씩 나아갈 수 있도록 돕는 단계별 사회 재진입 지원 서비스입니다. 심리적 장벽을 낮추기 위해 '퀘스트' 형식의 게이미피케이션 요소를 도입하였습니다.
+# 🏠 도란도란 (Doran-Doran)
 
-주요 기능
-단계별 퀘스트: 은둔 상태에서 벗어나기 위한 단계별 행동 지침을 퀘스트 형태로 제공합니다.
+## 사용자 가이드 (User Guide)
 
-마이크로 워크 매칭: 청년들이 작은 일부터 경험하며 성취감을 느낄 수 있도록 소규모 일자리를 연결합니다.
+### 서비스 소개
+**방해금지 모드 웹 서비스**는 집중 시간을 방해하는 웹사이트를 차단하고, 할 일을 관리하며, 집중 세션을 기록할 수 있는 서비스입니다.  
+이 서비스는 **집중력 향상**, **목표 달성**, **시간 관리**를 돕습니다.
 
-게이미피케이션 레벨 시스템: 활동 결과에 따른 레벨업과 랭킹 시스템을 통해 지속적인 동기를 부여합니다.
+---
 
-피드백 시스템: 멘토와 멘티 간의 원활한 소통과 계획 관리를 지원합니다.
+## 주요 기능
 
-시작 방법
-카카오 계정을 통해 간편하게 로그인합니다.
+### 🚫 사이트 차단
+*   차단할 사이트 URL을 등록하면, 선택한 시간 동안 해당 사이트 접속이 차단됩니다.
+*   URL은 여러 개 등록할 수 있으며, 삭제 및 수정 가능합니다.
+*   자주 차단하는 사이트는 자동으로 저장되어 다음에 쉽게 선택할 수 있습니다.
 
-현재 본인의 상태에 맞는 초기 퀘스트를 선택합니다.
+### ⏲️ 집중 세션
+*   원하는 시간을 설정해 집중 세션을 시작할 수 있습니다.
+*   집중 중에는 등록된 사이트가 차단됩니다.
+*   긴급 상황 시 **"긴급 종료 요청"** 기능으로 세션을 조기 종료할 수 있습니다.
 
-매일 주어지는 작은 미션들을 수행하고 인증합니다.
+### 📝 할 일 플래너
+*   오늘의 할 일을 작성하고 완료 여부를 체크할 수 있습니다.
+*   완료한 항목과 남은 항목을 한눈에 볼 수 있습니다.
 
-경험치를 쌓아 새로운 마이크로 워크에 도전합니다.
+### 👤 마이페이지
+*   오늘의 총 집중 시간 조회
+*   완료한 할 일 개수 / 전체 할 일 개수 통계
+*   차단된 사이트 목록 및 세션 기록 확인
 
-사용 환경
-Web: 크롬(Chrome) 및 최신 브라우저 최적화
+---
 
-Mobile: 모바일 반응형 웹 지원
+## 시작 방법
+1.  **회원가입/로그인** 후 사용 가능합니다.
+2.  **차단할 사이트 URL**을 등록하세요.
+3.  **집중 세션**을 시작하세요.
+4.  **할 일 플래너**에 오늘의 할 일을 작성하세요.
+5.  필요하면 **긴급 종료**를 요청할 수 있습니다.
 
-개발자 가이드 (Developer Guide)
+---
 
-기술 스택
-Backend: Java 17, Spring Boot, Spring Data JPA
+## 사용 환경
+*   **Web:** 크롬(Chrome) 등 현대적인 웹 브라우저
+*   **Device:** PC, 노트북
 
-Frontend: React, Next.js (예정)
+---
 
-Database: MySQL
+# 개발자 가이드 (Developer Guide)
 
-AI Tools: GitHub Copilot, Cursor (AI-First Workflow 도입)
+## 🛠 기술 스택
+*   **Backend:** NestJS, TypeScript
+*   **DB:** MySQL (Prisma ORM)
+*   **Frontend:** React, JavaScript
+*   **Deployment:** AWS EC2, RDS, GitHub Actions
 
-주요 API 명세 (간단 요약)
-리소스	메서드/엔드포인트	설명
-Auth	POST /api/auth/kakao	카카오 소셜 로그인
-Quest	GET /api/quests	현재 진행 가능한 퀘스트 목록 조회
-Quest	POST /api/quests/{id}/complete	퀘스트 수행 인증 및 완료 처리
-Work	GET /api/works	맞춤형 마이크로 워크 목록 조회
-User	GET /api/users/me	내 프로필 및 레벨/경험치 조회
-DB 테이블 구조
-User: 사용자 기본 정보 및 현재 레벨 정보
+---
 
-Quest: 퀘스트 내용, 난이도 및 보상 경험치
+## 🚀 주요 API 명세 (간단 요약)
 
-UserQuest: 사용자가 수락한 퀘스트의 진행 상태
+| 리소스 | 메서드/엔드포인트 | 설명 |
+| :--- | :--- | :--- |
+| **Auth** | `POST /api/auth/google/login` | 구글 로그인 |
+| **Block** | `POST /api/block` | 차단 URL 등록 |
+| | `GET /api/block` | 차단 URL 조회 |
+| | `DELETE /api/block/{id}` | 차단 URL 삭제 |
+| **Focus** | `POST /api/focus` | 집중 세션(타이머) 시작 |
+| | `GET /api/focus?date=YYYY-MM-DD` | 오늘 세션 조회 |
+| **Emergency** | `GET /api/emergency` | 긴급 요청 목록 조회 |
+| | `POST /api/emergency` | 긴급 종료 요청 |
+| **Todo** | `POST /api/todo` | 오늘의 플래너 작성 |
+| | `GET /api/todo?date=YYYY-MM-DD` | 오늘의 플래너 목록 조회 |
+| | `PATCH /api/todo/{id}` | 플래너 수정 |
+| | `DELETE /api/todo/{id}` | 플래너 항목 삭제 |
+| **MyPage** | `GET /api/my-page` | 통계/마이페이지 조회 |
 
-MicroWork: 일자리 정보 및 매칭 현황
+> 💡 **자세한 API 명세는 아래 주소를 참조하세요.**  
+> `http://ec2-3-35-37-148.ap-northeast-2.compute.amazonaws.com:3000/api-docs`
 
-페이지 구조
-Plaintext
+---
+
+## 🗄 DB 테이블 구조
+*   `User`, `Block`, `Focus`, `Todo`, `EmergencyRequest`, `UserSetting`, `FocusLog`
+
+---
+
+## 📂 페이지 구조
+```text
 /pages
-  ├── index.js (랜딩 및 메인)
-  ├── login.js (로그인)
-  ├── quests.js (퀘스트 목록)
-  ├── works.js (일자리 매칭)
-  └── mypage.js (성장 대시보드)
-사용한 오픈소스
-Spring Boot: 견고한 백엔드 아키텍처 구축을 위한 프레임워크
-
-Lombok: 자바 코드 다이어트를 위한 라이브러리
-
-SpringDoc OpenAPI: Swagger를 통한 API 명세 자동화
-
-배포 환경
-Backend: AWS EC2 기반의 독립 서버 배포 (Docker 활용 예정)
-
-Frontend: Vercel 또는 Netlify를 통한 자동 배포
-
-기여 가이드 (Contribution Guide)
-Branch Strategy: main (배포), develop (개발), feature/{기능명} (기능별 작업)
-
-Code Review: 모든 PR은 팀원 1명 이상의 승인이 있어야 Merge 가능합니다.
-
-Commit Convention: feat:, fix:, chore:, docs: 등의 머리말을 사용합니다.
-
-© 2026 Kakao Tech for Impact - Team Doran-Doran
+  ├── login.js   # 로그인 페이지
+  ├── main.js    # 메인 대시보드
+  ├── mypage.js  # 사용자 통계
+  ├── record.js  # 집중 기록 관리
+  └── timer.js   # 집중 타이머 화면
